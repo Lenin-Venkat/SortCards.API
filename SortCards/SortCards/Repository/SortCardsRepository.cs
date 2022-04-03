@@ -22,7 +22,7 @@ namespace SortCards.Repository
                 SortedHearts,
                 SortedCards
                 = new List<string>();
-            InputList = new List<string>() { "3C", "JS", "2D", "PT","ST","QH","JH", "10H","AH","9H", "KH", "8S", "4T","2T", "AC", "4H", "RT", "JD","QD","KD","AD" };
+            //InputList = new List<string>() { "3C", "JS", "2D", "PT","ST","QH","JH", "10H","AH","9H", "KH", "8S", "4T","2T", "AC", "4H", "RT", "JD","QD","KD","AD" };
             try
             {
                 SpecialCards = InputList.Where(item => item.EndsWith('T')).ToList();

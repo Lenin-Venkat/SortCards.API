@@ -11,7 +11,6 @@ C:\SortCards\SortCards.API\SortCards\SortCards\bin\Debug\net5.0\Microsoft.OpenAp
 C:\SortCards\SortCards.API\SortCards\SortCards\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\SortCards\SortCards.API\SortCards\SortCards\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\SortCards\SortCards.API\SortCards\SortCards\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\SortCards.csprojAssemblyReference.cache
 C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\SortCards.GeneratedMSBuildEditorConfig.editorconfig
 C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\SortCards.AssemblyInfoInputs.cache
 C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\SortCards.AssemblyInfo.cs
@@ -27,3 +26,4 @@ C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\SortCards.dll
 C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\ref\SortCards.dll
 C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\SortCards.pdb
 C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\SortCards.genruntimeconfig.cache
+C:\SortCards\SortCards.API\SortCards\SortCards\obj\Debug\net5.0\SortCards.csprojAssemblyReference.cache

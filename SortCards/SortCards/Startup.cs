@@ -28,6 +28,19 @@ namespace SortCards
         public void ConfigureServices(IServiceCollection services)
         {
 
+            
+            services.AddCors((options)=>
+            {
+                options.AddPolicy("angularApplication", (builder) => 
+                {
+                    //builder.WithOrigins("http://localhost:4200/")
+                    builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .WithMethods("POST")
+                    .WithExposedHeaders("*");
+                }
+                );
+            });
             services.AddControllers();
             services.AddScoped<ISortCardsRepository, SortCardsRepository>();
             services.AddSwaggerGen(c =>
@@ -45,11 +58,10 @@ namespace SortCards
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SortCards v1"));
             }
-
-            app.UseHttpsRedirection();
+            app.UseCors("angularApplication");
 
             app.UseRouting();
-
+            app.UseHttpsRedirection();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
