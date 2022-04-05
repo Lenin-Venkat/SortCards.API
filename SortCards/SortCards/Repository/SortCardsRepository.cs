@@ -7,7 +7,7 @@ namespace SortCards.Repository
 {
     public class SortCardsRepository : ISortCardsRepository
     {
-        public List<string> GetSortedCardsList(List<string> InputList)
+        public async Task<List<string>> GetSortedCardsList(List<string> InputList)
         {
             List<string> 
                 SpecialCards, 
@@ -30,11 +30,11 @@ namespace SortCards.Repository
                 Spades = InputList.Where(item => item.EndsWith('S')).ToList();
                 Clubs = InputList.Where(item => item.EndsWith('C')).ToList();
                 Hearts = InputList.Where(item => item.EndsWith('H')).ToList();
-                SortedSpecialCards = SortSpecialCards(SpecialCards);
-                SortedDiamonds = SortSuits(Diamonds, "D");
-                SortedClubs = SortSuits(Clubs, "C");
-                SortedHearts = SortSuits(Hearts, "H");
-                SortedSpades = SortSuits(Spades, "S");
+                SortedSpecialCards = await SortSpecialCards(SpecialCards);
+                SortedDiamonds = await SortSuits(Diamonds, "D");
+                SortedClubs = await SortSuits(Clubs, "C");
+                SortedHearts =  await SortSuits(Hearts, "H");
+                SortedSpades = await SortSuits(Spades, "S");
                 SortedSpecialCards.AddRange(SortedDiamonds);
                 SortedSpecialCards.AddRange(SortedSpades);
                 SortedSpecialCards.AddRange(SortedClubs);
@@ -48,7 +48,7 @@ namespace SortCards.Repository
             return SortedCards;
         }
 
-        public List<string> SortSpecialCards(List<string> SpecialCards) 
+        public async Task<List<string>> SortSpecialCards(List<string> SpecialCards) 
         {
             if (SpecialCards.Contains("4T"))
                 SpecialCards[SpecialCards.IndexOf("4T")] = "1T";
@@ -61,7 +61,7 @@ namespace SortCards.Repository
                 SpecialCards[SpecialCards.IndexOf("OT")] = "ST";
             return SpecialCards;
         }
-        public List<string> SortSuits(List<string> Suits, string card)
+        public async Task< List<string>> SortSuits(List<string> Suits, string card)
         {
             if(Suits.Contains("10" + card))
                 Suits[Suits.IndexOf("10" + card)] = "9" + card + "A";

@@ -18,9 +18,9 @@ namespace SortCards.Controllers
         }
         [HttpPost]
         [Route("SortCardsController")]
-        public IActionResult GetSortedCardsList([FromBody] List<string> InputList)
+        public async Task<IActionResult> GetSortedCardsList([FromBody] List<string> InputList)
         {
-            return Ok( sortCardsRepository.GetSortedCardsList(InputList));
+            return  Ok(await sortCardsRepository.GetSortedCardsList(InputList));
         }
     }
 }

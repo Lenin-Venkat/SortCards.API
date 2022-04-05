@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using SortCards.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,7 +37,7 @@ namespace SortCards
                     //builder.WithOrigins("http://localhost:4200/")
                     builder.AllowAnyOrigin()
                     .AllowAnyHeader()
-                    .WithMethods("POST")
+                    .WithMethods("GET","POST")
                     .WithExposedHeaders("*");
                 }
                 );
@@ -52,18 +53,38 @@ namespace SortCards
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //app.UseSwagger();
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "SortCards v1");
+            //    c.RoutePrefix = string.Empty;
+            //}
+            //) ;
+
+            app.Use(async (context, next) =>
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SortCards v1"));
+                await next();
+                if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value)) 
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+
             }
+            ) ;
+
             app.UseCors("angularApplication");
 
-            app.UseRouting();
+            
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseRouting();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
